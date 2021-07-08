@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+        body {
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            padding-top: 10px;
+            margin: 0px;
+            text-align: center;
+            color: #2F80ED;
+            font-size: 2em;
+            font-family: "verdana";
+        }
+
+        .header1 {
+            font-size: 70px;
+        }
+
+        p {
+            font-family: "verdana";
+            color: #565656;
+            text-align: center;
+            font-size: 16px;
+            margin: 10px 100px;
+        }
+
+        div {
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        a {
+            text-align: center;
+            font-family: "verdana";
+        }
+
+        .button {
+            background-color: #2F80ED;
+            border: none;
+            color: white;
+            padding: 30px 200px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 60px;
+            {#margin-top: 80px;#}
+            {#margin-bottom: 100px;#}
+            cursor: pointer;
+            border-radius: 15px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            position: fixed;
+            bottom: 40px;
+            left: 22.5%;
+        }
+
+        .button:hover {
+            background-color: #225caa;
+        }
+
+
+        #demo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+        .paragraph {
+            margin: 40px;
+            display: flex;
+        }
+
+        .index {
+            height: 65px;
+            padding-right: 30px;
+        }
+
+        .rules text {
+            font-size: 2em;
+            font-family: "verdana";
+            color: #565656;
+            width: 100%;
+        }
+
+        .rules h2 {
+            font-size: 3em;
+            color: #565656;
+            font-family: "verdana";
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        #logo, #logo2 {
+            width: 90%;
+            margin-left: 5%;
+        }
+
+        .collapsible {
+            background-color: #f2f2f2;
+            color: #4F4F4F;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: center;
+            outline: none;
+            font-size: 3em;
+        }
+
+
+        /* Style the collapsible content. Note: hidden by default */
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+
+        .legal {
+            padding-top: 40px;
+            padding-bottom: 250px;
+        }
+
+        #polygon {
+            height: .5em;
+            padding-left: 10px;
+        }
+
+        .badges {
+            justify-content: center;
+        }
+
+        .badge {
+            width: 15%;
+            height: 15%;
+        }
+
+
+        @media (min-width: 1000px) {
+        {% load static %}
+
+            .header {
+                font-size: 1.5em;
+            }
+
+            .badge {
+                width: 10%;
+            }
+
+            .legal {
+                padding-top: 0px;
+                padding-bottom: 30px;
+            }
+
+            .collapsible {
+                cursor: pointer;
+                padding: 5px;
+                font-size: 1em;
+            }
+
+            #logo, #logo2 {
+                width: 40%;
+                margin-left: 30%;
+            }
+
+            body {
+                background-image: url("{% static 'myapp/08.png' %}");;
+            }
+
+            .header1 {
+                padding-top: 30px;
+                font-size: 50px;
+            }
+
+            .index {
+                height: 25px;
+                padding-right: 10px;
+            }
+
+            .block {
+                background: #f2f2f2;
+                margin: 80px 220px;
+                border-radius: 10px;
+                border: 2px solid #cbcbcb;
+            }
+
+            .rules text {
+                font-size: 15px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .paragraph {
+                margin: 30px 150px;
+            }
+
+            .rules h2 {
+                padding-top: 0px;
+                font-size: 20px;
+            }
+
+            #demo {
+                margin-top: 0px;
+            }
+
+            .button {
+                padding: 15px 100px;
+                font-size: 18px;
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-bottom: 40px;
+                position: initial;
+                bottom: auto;
+                left: auto;
+            }
+        }
+    </style>
+    <title>Google or Not?</title>
+
+    <meta property="og:url" content="https://shielded-tundra-32718.herokuapp.com"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Google or Not?"/>
+    <meta property="og:description" content="Can you tell the difference?"/>
+    <meta property="og:image" content="https://shielded-tundra-32718.herokuapp.com/static/myapp/image3.png"/>
+    <meta property="og:image:type" content="image/png"/>
+
+
+</head>
+<body>
+
+<div class="block">
+    {% load static %}
+    {#    <h1 class="header header1">Google or Not?</h1>#}
+    <img id="logo" src="{% static 'myapp/google_or_not.png' %}" alt="1">
+    <p></p>
+    <img id="logo2" src="{% static 'myapp/uw_lab.png' %}" alt="1">
+    <div class="rules">
+        <h2>How to Play:</h2>
+        <div class="paragraph">
+            <img class="index" src="{% static 'myapp/1.png' %}" alt="1">
+            <text><span style="color: #2F80ED; font-weight: bold">Guess which is from Google!</span><br>
+                You will be shown <span style="color: #2F80ED; ">two sets</span> of results for each search term. You
+                will
+                have <span style="color: #2F80ED; ">30 seconds</span>.
+            </text>
+        </div>
+        <div class="paragraph">
+            <img class="index" src="{% static 'myapp/2.png' %}" alt="2">
+            <text>For being <span style="color: #27AE60; ">right, +10 points.</span><br>
+                For being <span style="color: #EB5757; ">wrong, -5 points.</span><br>
+                <span style="color: #F2994A; ">No answer, 0 point.</span>
+        </div>
+        <div class="paragraph">
+            <img class="index" src="{% static 'myapp/3.png' %}" alt="3">
+            <text>There will be <span style="color: #2F80ED; ">20 rounds</span>.
+                You will get a <span style="color: #2F80ED; ">badge</span> after finished the game.<br>
+                <span style="color: #2F80ED; ">Good luck!</span></text>
+            <br>
+        </div>
+        <div class="paragraph badges">
+            <img class="badge" src="{% static 'myapp/eaglebadge1.png' %}">
+            <img class="badge" src="{% static 'myapp/owlbadge1.png' %}">
+            <img class="badge" src="{% static 'myapp/goatbadge1.png' %}">
+            <img class="badge" src="{% static 'myapp/batbadge1.png' %}">
+            <img class="badge" src="{% static 'myapp/molebadge1.png' %}">
+        </div>
+    </div>
+
+    {#<img id="demo" src="{% static 'myapp/demo_phone.png' %}" alt="demo">#}
+    {#    <picture>#}
+    {#        <source media="(min-width: 1000px)" srcset="{% static 'myapp/demo2.jpg' %}">#}
+    {#        <source media="(min-width: 480px)" srcset="{% static 'myapp/demo_phone.png' %}">#}
+    {#        <img id="demo" src="OtherImage.png" alt="IfItDoesntMatchAnyMedia">#}
+    {#    </picture>#}
+
+    <h3></h3>
+    <div class="legal">
+        {#        <h2>The Legal Stuff:</h2>#}
+        {#        <p>This game has been explained to me. I have had a chance to ask questions. If I have questions later about#}
+        {#            this#}
+        {#            game, or if I have been harmed by participating in it, I can contact Dr. Chirag Shah (chirags@uw.edu). If I#}
+        {#            have#}
+        {#            questions about my rights as a participant, I can call the Human Subjects Division at (206) 543-0098 or call#}
+        {#            collect at (206) 221-5940.#}
+        {#        </p>#}
+        <button type="button" class="collapsible"><u>The Legal Stuff</u><img id="polygon"
+                                                                             src="{% static 'myapp/Polygon.png' %}">
+        </button>
+        <div class="content">
+            <p>This game has been explained to me. I have had a chance to ask questions. If I have questions later about
+                this game, or if I have been harmed by participating in it, I can contact Dr. Chirag Shah
+                (chirags@uw.edu). If I
+                have questions about my rights as a participant, I can call the Human Subjects Division at (206)
+                543-0098 or call
+                collect at (206) 221-5940.</p>
+        </div>
+    </div>
+    <div class="agree" style="text-align: center; ">
+        <form action="../redir1/{{ respondent_id }}/" id="to_home">
+            <input type="submit" value="Play!" class="button">
+        </form>
+    </div>
+    </form>
+</div>
+</body>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+</html>

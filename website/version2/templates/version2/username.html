@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
+
+        {% load static %}
+        body {
+            background-image: url("{% static 'myapp/bg.jpg' %}");
+            background-size: 350%;
+        }
+
+        .text {
+            padding-top: 20%;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 40px;
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .board {
+            background: #2d1c00;
+            padding-bottom: 50px;
+            margin-bottom: 60px;
+        }
+
+        .board-title {
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            padding-top: 40px;
+            font-size: 50px;
+            color: #ffc923;
+        }
+
+        #container {
+            width: 100%;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            border-style: solid;
+            border-width: 2px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+            border-color: navajowhite;
+        {#border-radius: 8px;#}
+        }
+
+        .row {
+            position: relative;
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid #AFAFAF;
+        }
+
+        .score, .name {
+            font-size: 45px;
+            line-height: 45px;
+            text-align: left;
+            padding: 20px;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .name {
+            float: left;
+        }
+
+        .score {
+            width: 20%;
+            padding: 50px;
+            position: absolute;
+            right: 0;
+        }
+
+        .badge {
+            width: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        input {
+            width: 200px;
+            height: 50px;
+            font-size: 30px;
+            margin-left: 40%;
+        }
+
+        @media (min-width: 1000px) {
+            .text {
+                font-size: 20px;
+                padding-top: 10%;
+            }
+
+            .board {
+                width: 70%;
+                margin-left: 15%;
+            }
+
+            #container {
+                width: 60%;
+            }
+
+            input {
+                width: 20%;
+                height: 10%;
+                margin-left: 40%;
+                font-size: 20px;
+            }
+
+            body {
+                background-size: 100%;
+            }
+
+            .board-title {
+                font-size: 30px;
+            }
+
+            .badge {
+                width: 50px;
+            }
+
+            .score, .name {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .score {
+                padding: 13px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div class="text">
+    <p>Congratulations! You made our Top 5.</p>
+    <p>By that, you have the privilege to leave your mark here.</p>
+</div>
+
+<div class="submit">
+    <form action="../leaderboard{{ score }}/" id="main_form" method="get">
+        <input type="text" name="username">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div class="board">
+    <h3 class="board-title">Leaderboard TOP 5!</h3>
+
+    <div id="container">
+        {% load static %}
+
+        <div class="row">
+            <div class="name">
+                <text style="color: #F2C94C">#1</text>
+                <img class="badge" id="badge1" src="{% static 'myapp/eaglebadge2.png' %}">
+                <text id="top1" style="color: #F2C94C">{{ top_five.0.1 }}</text>
+            </div>
+            <div class="score" id="score1" style="color: #F2C94C">{{ top_five.0.0 }}</div>
+        </div>
+
+        <div class="row">
+            <div class="name">
+                <text style="color: #F2F2F2">#2</text>
+                <img class="badge" id="badge2" src="{% static 'myapp/eaglebadge2.png' %}">
+                <text id="top2" style="color: #F2F2F2">{{ top_five.1.1 }}</text>
+            </div>
+            <div class="score" id="score2" style="color: #F2F2F2">{{ top_five.1.0 }}</div>
+        </div>
+
+        <div class="row">
+            <div class="name">
+                <text style="color: #EBA076">#3</text>
+                <img class="badge" id="badge3" src="{% static 'myapp/eaglebadge2.png' %}">
+                <text id="top3" style="color: #EBA076">{{ top_five.2.1 }}</text>
+            </div>
+            <div class="score" id="score3" style="color: #EBA076">{{ top_five.2.0 }}</div>
+        </div>
+
+        <div class="row">
+            <div class="name">
+                <text style="color: #6BB4DD">#4</text>
+                <img class="badge" id="badge4" src="{% static 'myapp/eaglebadge2.png' %}">
+                <text id="top4" style="color: #6BB4DD">{{ top_five.3.1 }}</text>
+            </div>
+            <div class="score" id="score4" style="color: #6BB4DD">{{ top_five.3.0 }}</div>
+        </div>
+
+        <div class="row">
+            <div class="name">
+                <text style="color: #6FCF97">#5</text>
+                <img class="badge" id="badge5" src="{% static 'myapp/eaglebadge2.png' %}">
+                <text id="top5" style="color: #6FCF97">{{ top_five.4.1 }}</text>
+            </div>
+            <div class="score" id="score5" style="color: #6FCF97">{{ top_five.4.0 }}</div>
+        </div>
+
+        {#            {% for datum in top_five %}#}
+        {#                {% if forloop.counter < 6 %}#}
+        {#                    <div class="row">#}
+        {#                        <text class="name">{{ datum.1 }}</text>#}
+        {#                        <text class="score">{{ datum.0 }}</text>#}
+        {#                    </div>#}
+        {#                {% endif %}#}
+        {#            {% endfor %}#}
+    </div>
+</div>
+
+</body>
+
+<script>
+    {% load static %}
+
+    function changeBadge(score_n, badge_n) {
+        var score = document.getElementById(score_n).innerText
+        console.log(score)
+        if (score < 40) {
+            document.getElementById(badge_n).src = "{% static 'myapp/molebadge2.png' %}"
+        } else if (score < 80) {
+            document.getElementById(badge_n).src = "{% static 'myapp/batbadge2.png' %}"
+        } else if (score < 120) {
+            document.getElementById(badge_n).src = "{% static 'myapp/goatbadge2.png' %}"
+        } else if (score < 160) {
+            document.getElementById(badge_n).src = "{% static 'myapp/owlbadge2.png' %}"
+        } else {
+            document.getElementById(badge_n).src = "{% static 'myapp/eaglebadge2.png' %}"
+        }
+    }
+
+    changeBadge("score1", "badge1")
+    changeBadge("score2", "badge2")
+    changeBadge("score3", "badge3")
+    changeBadge("score4", "badge4")
+    changeBadge("score5", "badge5")
+
+</script>
+</html>
